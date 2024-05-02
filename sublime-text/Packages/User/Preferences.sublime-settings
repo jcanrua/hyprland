@@ -1,0 +1,12 @@
+{
+	"font_face": "JetBrainsMono Nerd Font",
+	"font_size": 10,
+	"fold_buttons": false,
+	"ruler_style": "solid",
+	"save_on_focus_lost": true,
+	"caret_style": "phase",
+
+
+	"color_scheme": "Packages/aura-theme.tmTheme",
+	"theme": "Adaptive.sublime-theme",
+}

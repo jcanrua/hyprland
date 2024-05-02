@@ -1,0 +1,138 @@
+// =============================================================================
+//
+// Waybar configuration
+//
+// Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
+//
+// =============================================================================
+
+{
+    // -------------------------------------------------------------------------
+    // Global configuration
+    // -------------------------------------------------------------------------
+
+    "layer": "top",
+
+    "position": "top",
+    "margin-left": 6,
+    "margin-right": 6,
+    "margin-top": 3,
+    // If height property would be not present, it'd be calculated dynamically
+    "height": 27,
+
+    "modules-left": [
+        "hyprland/workspaces",
+        "hyprland/mode"
+    ],
+    "modules-center": [
+        "hyprland/window",
+    ],
+    "modules-right": [
+        "backlight",
+        "pulseaudio",
+        "battery",
+        "clock#time"
+        
+    ],
+
+
+    // -------------------------------------------------------------------------
+    // Modules
+    // -------------------------------------------------------------------------
+
+    "battery": {
+        "interval": 10,
+        "states": {
+            "warning": 10,
+            "critical": 5
+        },
+        // Connected to AC
+        "format": "{capacity}% ", // Icon: bolt
+        // Not connected to AC
+        "format-discharging": "{capacity}% {icon}",
+        "format-icons": [
+            "", // Icon: battery-full
+            "", // Icon: battery-three-quarters
+            "", // Icon: battery-half
+            "", // Icon: battery-quarter
+            ""  // Icon: battery-empty
+        ],
+        "tooltip": false
+    },
+
+    "clock#time": {
+        "interval": 1,
+        "format": "{:%H:%M }",
+        "format-alt": "{:%d/%m/%Y | %H:%M:%S }",
+        "tooltip": false,
+    },
+
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 120
+    },
+
+    "hyprland/workspaces": {
+        "all-outputs": false,
+        "disable-scroll": true,
+        "on-click": "activate",
+        "format": "{name} {windows} ",
+         "format-window-separator": "  ",
+         "window-rewrite-default": "",
+         "window-rewrite": {
+             // https://www.nerdfonts.com/cheat-sheet and https://fontawesome.com/icons
+             "class<Alacritty>": "",
+             "class<Thunar>": "",
+             "class<firefox>": "",
+             "class<discord>": "",
+             "title<Discord.*>": "",
+             "title<.[0-9]+. Discord.*>": " °",
+             "title<WhatsApp.*>": "",
+             "title<.[0-9]+. WhatsApp.*>": "°",
+             "title<(.* - )?(.[0-9]+. )?YouTube.*>": "",
+             "title<.* - Gmail .*>": "󰊫",
+             "class<mpv>": "",
+             "class<vlc>": "󰕼",
+             "class<Gimp-.*>": "",
+             "class<steam.*>": "", //  for FontAwesome
+             "class<steam> title<Friends List>": "",
+             "class<steam_app_[0-9]+>": "󰮂",
+             "class<Spotify>": "",
+             "class<Code>": "󰨞",
+             "class<sublime_text>": "",
+             "class<(Chromium)|(Chrome)>": "",
+             "class<galculator>": "",
+             "class<wofi>": "",
+             "class<com.github.xournalpp.xournalpp>": ""
+         },
+    },
+
+    "pulseaudio": {
+        "scroll-step": 5,
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{icon}  {volume}%",
+        "format-muted": "",
+        "format-icons": {
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "default": ["", ""]
+        },
+        "on-click": "amixer set Master toggle"
+    },
+
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+
+    "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon}",
+    "format-alt": "{percent}% {icon}",
+    "format-icons": ["", ""],
+    "on-scroll-up": "brightnessctl s +1%",
+    "on-scroll-down": "brightnessctl s 1%-",
+    "scroll-step": "1.0"
+    }
+}
